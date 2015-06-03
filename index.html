@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html ng-app="rcApp">
+<head>
+    <title>Readiness Center</title>
+    <style>
+        p{margin: 0;}
+    </style>
+</head>
+<body>
+    <div class="container" ng-controller="rcController" ng-init="init()">
+        <div id="views" ng-view></div>
+        <script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <h3 class="modal-title">I'm a modal!</h3>
+        </div>
+        <div class="modal-body">
+            <ul>
+                <li ng-repeat="item in items">
+                    <a ng-click="selected.item = item">{{ item }}</a>
+                </li>
+            </ul>
+            Selected: <b>{{ selected.item }}</b>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="ok()">OK</button>
+            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
+        <button ng-click="next()" ng-show="currentQuestion != totalQuestions">Next</button>
+        <button ng-click="previous()" ng-show="currentQuestion != 1">Previous</button>
+        <button ng-click="submit()" ng-show="currentQuestion == totalQuestions">Submit</button>
+        <button ng-click="open()">Open Modal</button>
+    </div>
+    <script>
+        var page = "questions/TestMyTech/1.html###questions/TestMyTech/2.html###questions/TestMyTech/3.html###questions/TestMyTech/4.html###questions/TestMyTech/5.html###questions/TestMyTech/6.html###questions/TestMyTech/7.html###questions/TestMyTech/8.html";
+    </script>
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular-route.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.js"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="js/app.js"></script>
+    <script src="js/service/rcService.js"></script>
+    <script src="js/controllers/rcController.js"></script>
+    <script src="js/controllers/routingController.js"></script>
+    <script src="js/controllers/resultsController.js"></script>
+</body>
+</html>
